@@ -1,0 +1,45 @@
+class Actions:
+    FromDeviceStartup = 'device.startup'
+    FromDeviceReady = 'device.ready'
+    FromDeviceReset = 'device.reset'
+    FromDevicePropertyValue = 'device.reportpropertyvalue'
+    FromDeviceStreamData = 'device.senddatatoclient'
+    FromDeviceDefineProperty = 'device.defineavailableproperty'
+    FromDeviceDefineMetadata = 'device.defineavailablemetadata'
+    FromDeviceDefineStream = 'device.defineavailablestream'
+
+    ToDeviceReset = 'device.receivedresetrequest'
+    ToDeviceGetProperty = 'device.propertygetrequested'
+    ToDeviceSetProperty = 'device.propertysetrequested'
+    ToDeviceStreamData = 'device.datareceivedfromclient'
+
+    FromCommReceive = 'comm.receive'
+    FromCommConnect = 'comm.connected'
+    FromCommDisconnect = 'comm.disconnected'
+
+    ToCommTransmit = 'comm.transmit'
+    ToCommConnect = 'comm.connect'
+    ToCommDisconnect = 'comm.disconnect'
+
+    FromClientStartup = 'client.startup'
+    FromClientGetProperty = 'client.gettingpropertyvalue'
+    FromClientSetProperty = 'client.settingpropertyvalue'
+    FromClientStreamData = 'client.sendingdatatodevice'
+    FromClientReset = 'clent.reseitting'
+    FromClientConnect = 'client.connecting'
+    FromClientDisconnect = 'client.disconnecting'
+
+    ToClientStatus = 'client.statuschange'
+    ToClientDeviceInfo = 'client.deviceinfoavailable'
+    ToClientPropertyValue = 'client.propertyvaluereported'
+    ToClientStreamData = 'client.datareceivedfromdevice'
+    
+    CoordinatorState = 'changestate'
+    CoordinatorClearEnumeration = 'clearenumeration'
+    CoordinatorSetEnumeration = 'setenumeration'
+    CoordinatorResetNextElementId = 'resetnextelementid'
+    CoordinatorIncrementNextElementId = 'incrementnextelementid'
+    CoordinatorAppendEnumeration = 'appendenumeration'
+    CoordinatorInformation = 'information'
+
+    Exit = 'exit'

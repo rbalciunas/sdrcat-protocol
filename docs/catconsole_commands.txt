@@ -1,0 +1,28 @@
+####### Basic Commands #######
+help                # list commands
+enum                # list enumeration
+prop {prop}         # get property value
+prop {prop}={value} # set prop value
+strm {streamname}   # set the active output stream
+frmt {format}       # set the stream data input format
+meta {name}={value} # add/set the specified metadata to the specified value
+clmt                # clear the metadata table
+send {values}       # send the values (formatted as specified) on the active output stream along with the specified metadata table
+
+####### Data Formats #######
+text - the data will be all of the text that follows the first space, encoded as utf8
+For example, if the command is:
+> send lorem ipsum dolor sit amet
+then the sent data will be "lorem ipsum dolor sit amet" (without the quotes)
+
+binary - the data will be a string of "1" and "0", ignoring whitespace, encoded as equivalent uint8's
+For example, if the command is:
+> send 10101010 1111 1000
+the sent data will be [ 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00 ]
+
+bytes - the data will be a list of hex-encoded bytes, encoded as equivalent uint8's. whitespace will be ignored
+for example, if the command is:
+> send fe ed co ff ee 11
+or
+> send feed coffee 11
+the sent data will be [0xFE, 0xED, 0xCO, 0xFF, 0xEE, 0x11 ]
