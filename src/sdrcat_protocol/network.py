@@ -340,20 +340,20 @@ class ElementDescription:
         return result
 
     def EncodeValue(self, value) -> bytes:
-        if   self.dataType == DataTypes.raw.value        and isinstance(value, bytes):   return value
-        elif self.dataType == DataTypes.utf8.value       and isinstance(value, str):     return value.encode('utf-8')
-        elif self.dataType == DataTypes.sint8.value      and isinstance(value, int):     return value.to_bytes(1, 'big', signed=True)
-        elif self.dataType == DataTypes.uint8.value      and isinstance(value, int):     return value.to_bytes(1, 'big', signed=False)
-        elif self.dataType == DataTypes.sint16.value     and isinstance(value, int):     return value.to_bytes(2, 'big', signed=True)
-        elif self.dataType == DataTypes.uint16.value     and isinstance(value, int):     return value.to_bytes(2, 'big', signed=False)
-        elif self.dataType == DataTypes.sint32.value     and isinstance(value, int):     return value.to_bytes(4, 'big', signed=True)
-        elif self.dataType == DataTypes.uint32.value     and isinstance(value, int):     return value.to_bytes(4, 'big', signed=False)
-        elif self.dataType == DataTypes.sint64.value     and isinstance(value, int):     return value.to_bytes(8, 'big', signed=True)
-        elif self.dataType == DataTypes.uint64.value     and isinstance(value, int):     return value.to_bytes(8, 'big', signed=False)
-        elif self.dataType == DataTypes.float32.value    and isinstance(value, float):   return struct.pack(">f", value)
-        elif self.dataType == DataTypes.float64.value    and isinstance(value, float):   return struct.pack(">d", value)
-        elif self.dataType == DataTypes.complex64.value  and isinstance(value, complex): return struct.pack(">ff", value.real, value.imag)
-        elif self.dataType == DataTypes.complex128.value and isinstance(value, complex): return struct.pack(">dd", value.real, value.imag)
+        if   self.dataType == DataTypes.raw.value and isinstance(value, bytes): return value
+        elif self.dataType == DataTypes.utf8.value:       return str(value).encode('utf-8')
+        elif self.dataType == DataTypes.sint8.value:      return int(value).to_bytes(1, 'big', signed=True)
+        elif self.dataType == DataTypes.uint8.value:      return int(value).to_bytes(1, 'big', signed=False)
+        elif self.dataType == DataTypes.sint16.value:     return int(value).to_bytes(2, 'big', signed=True)
+        elif self.dataType == DataTypes.uint16.value:     return int(value).to_bytes(2, 'big', signed=False)
+        elif self.dataType == DataTypes.sint32.value:     return int(value).to_bytes(4, 'big', signed=True)
+        elif self.dataType == DataTypes.uint32.value:     return int(value).to_bytes(4, 'big', signed=False)
+        elif self.dataType == DataTypes.sint64.value:     return int(value).to_bytes(8, 'big', signed=True)
+        elif self.dataType == DataTypes.uint64.value:     return int(value).to_bytes(8, 'big', signed=False)
+        elif self.dataType == DataTypes.float32.value:    return float(struct).pack(">f", value)
+        elif self.dataType == DataTypes.float64.value:    return float(struct).pack(">d", value)
+        elif self.dataType == DataTypes.complex64.value:  return complex(struct).pack(">ff", value.real, value.imag)
+        elif self.dataType == DataTypes.complex128.value: return complex(struct).pack(">dd", value.real, value.imag)
         else: raise Exception("Either data type {} is not supported or the value passed is not compatible with that data type.".format(self.dataType))
 
     def EncodeStream(self, streamValues) -> bytes:
