@@ -350,10 +350,10 @@ class ElementDescription:
         elif self.dataType == DataTypes.uint32.value:     return int(value).to_bytes(4, 'big', signed=False)
         elif self.dataType == DataTypes.sint64.value:     return int(value).to_bytes(8, 'big', signed=True)
         elif self.dataType == DataTypes.uint64.value:     return int(value).to_bytes(8, 'big', signed=False)
-        elif self.dataType == DataTypes.float32.value:    return float(struct).pack(">f", value)
-        elif self.dataType == DataTypes.float64.value:    return float(struct).pack(">d", value)
-        elif self.dataType == DataTypes.complex64.value:  return complex(struct).pack(">ff", value.real, value.imag)
-        elif self.dataType == DataTypes.complex128.value: return complex(struct).pack(">dd", value.real, value.imag)
+        elif self.dataType == DataTypes.float32.value:    return struct.pack(">f", float(value))
+        elif self.dataType == DataTypes.float64.value:    return struct.pack(">d", float(value))
+        elif self.dataType == DataTypes.complex64.value:  return struct.pack(">ff", complex(value).real, complex(value).imag)
+        elif self.dataType == DataTypes.complex128.value: return struct.pack(">dd", complex(value).real, complex(value).imag)
         else: raise Exception("Either data type {} is not supported or the value passed is not compatible with that data type.".format(self.dataType))
 
     def EncodeStream(self, streamValues) -> bytes:
